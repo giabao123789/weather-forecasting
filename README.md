@@ -1,6 +1,6 @@
 # WeatherScope
 
-WeatherScope is a full-stack weather forecast application built as a portfolio-ready project with:
+WeatherScope is a portfolio-ready full-stack weather forecast application with:
 
 - `web/`: Next.js App Router frontend
 - `api/`: NestJS backend
@@ -8,15 +8,15 @@ WeatherScope is a full-stack weather forecast application built as a portfolio-r
 - OpenWeather for live weather data
 - JWT authentication for protected user routes
 
-The app lets users:
+Core features:
 
-- search weather by city
+- weather search by city
 - auto-detect current location
-- switch between `°C` and `°F`
+- Celsius / Fahrenheit toggle
 - register and login
-- store JWT locally on the frontend
-- save weather search history into MongoDB
-- review search history on a protected dashboard
+- JWT stored on the frontend
+- MongoDB search history
+- protected dashboard with user profile and history
 
 ## Tech Stack
 
@@ -26,7 +26,7 @@ The app lets users:
 - React `19.2.4`
 - Tailwind CSS `4`
 - TypeScript
-- Lucide React icons
+- Lucide React
 
 ### Backend
 
@@ -36,40 +36,41 @@ The app lets users:
 - JWT authentication
 - bcrypt password hashing
 - class-validator / class-transformer
-- OpenWeather API integration
+- OpenWeather API
 
 ## Project Structure
 
 ```text
 root/
-├── README.md
-├── web/
-│   ├── .env.local.example
-│   ├── package.json
-│   └── src/
-│       ├── app/
-│       ├── components/
-│       ├── lib/
-│       └── types/
-└── api/
-    ├── .env.example
-    ├── package.json
-    └── src/
-        ├── auth/
-        ├── common/
-        ├── users/
-        └── weather/
+|-- README.md
+|-- railway.json
+|-- web/
+|   |-- .env.local.example
+|   |-- package.json
+|   `-- src/
+|       |-- app/
+|       |-- components/
+|       |-- lib/
+|       `-- types/
+`-- api/
+    |-- .env.example
+    |-- package.json
+    `-- src/
+        |-- auth/
+        |-- common/
+        |-- users/
+        `-- weather/
 ```
 
 ## Features
 
-- Weather home page with temperature, city, weather condition, icon, humidity, and wind speed
+- Home page shows temperature, city, condition, weather icon, humidity, and wind speed
 - Search weather by city
 - Loading and error states
 - Auto-detect location with browser geolocation
-- `°C / °F` toggle
-- Register / login with JWT
-- Protected profile and dashboard history routes
+- `deg C / deg F` toggle
+- Register and login with JWT
+- Protected profile and dashboard routes
 - MongoDB search history storage
 - Responsive UI for desktop and mobile
 
@@ -88,7 +89,7 @@ NEXT_PUBLIC_BACKEND_URL=http://localhost:3001
 Create `api/.env` from `api/.env.example`:
 
 ```env
-DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/weather-app
+DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/weather-app?retryWrites=true&w=majority
 JWT_SECRET=your_super_secret_key
 WEATHER_API_KEY=your_openweather_api_key
 ```
@@ -130,7 +131,7 @@ npm run start:dev
 
 ### Windows PowerShell note
 
-If PowerShell blocks `npm` because of execution policy, use:
+If PowerShell blocks `npm`, use:
 
 ```bash
 npm.cmd install
@@ -228,56 +229,123 @@ fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/...`)
 
 If a valid JWT is sent in the `Authorization` header, the backend automatically saves the successful search to MongoDB Atlas.
 
-## How Authentication Works
-
-1. User registers or logs in from the frontend.
-2. NestJS validates credentials and returns a signed JWT.
-3. The frontend stores the token in local storage.
-4. Protected requests send `Authorization: Bearer <token>`.
-5. NestJS guard validates the JWT for profile/history routes.
-
 ## Deploy
 
 ### Frontend on Vercel
 
+This repository is an isolated two-app repo, so create a separate Vercel project for the `web` directory.
+
 1. Push the repository to GitHub.
-2. Import the project into Vercel.
-3. Set the root directory to `web`.
-4. Add environment variable:
+2. In Vercel, choose `Add New -> Project`.
+3. Import the repository.
+4. In project settings, set `Root Directory` to `web`.
+5. Keep the standard Next.js commands:
+
+```text
+Build Command: npm run build
+Output: Next.js managed output
+Install Command: npm install
+```
+
+6. Set the environment variable below for both `Production` and `Preview`:
 
 ```env
 NEXT_PUBLIC_BACKEND_URL=https://your-railway-backend.up.railway.app
 ```
 
-5. Deploy.
+7. Deploy.
 
 ### Backend on Railway
 
+This repository already includes [railway.json](./railway.json) with:
+
+- `RAILPACK` builder
+- `npm run build`
+- `npm run start:prod`
+- health check at `/api/health`
+- watch path limited to `/api/**`
+
+Deploy steps:
+
 1. Push the repository to GitHub.
-2. Create a new Railway project.
-3. Set the root directory to `api`.
-4. Add environment variables:
+2. In Railway, create a new project from the same repository.
+3. Open the backend service settings.
+4. Set `Root Directory` to `/api`.
+5. If Railway does not auto-pick the root config file, set the config file path to `/railway.json`.
+6. Add the service variables:
 
 ```env
 DATABASE_URL=mongodb+srv://...
-JWT_SECRET=your_secret
-WEATHER_API_KEY=your_api_key
-PORT=3001
+JWT_SECRET=replace_with_a_real_secret
+WEATHER_API_KEY=replace_with_a_real_openweather_key
 ```
 
-5. Railway will run the NestJS build and start commands from `api/package.json`.
+7. Review and deploy the staged variable changes.
+
+## Final Env Checklist
+
+### Local development
+
+Frontend:
+
+```env
+NEXT_PUBLIC_BACKEND_URL=http://localhost:3001
+```
+
+Backend:
+
+```env
+DATABASE_URL=mongodb+srv://...
+JWT_SECRET=your_local_secret
+WEATHER_API_KEY=your_openweather_api_key
+```
+
+### Vercel Production
+
+```env
+NEXT_PUBLIC_BACKEND_URL=https://your-railway-backend.up.railway.app
+```
+
+### Vercel Preview
+
+```env
+NEXT_PUBLIC_BACKEND_URL=https://your-railway-backend.up.railway.app
+```
+
+If you later change this variable on Vercel, redeploy. Vercel applies env changes only to new deployments.
+
+### Railway Production
+
+```env
+DATABASE_URL=mongodb+srv://...
+JWT_SECRET=strong_random_secret
+WEATHER_API_KEY=real_openweather_api_key
+```
+
+When you add or edit variables in Railway, review and deploy the staged changes so they take effect.
 
 ## Production Checklist
 
-- Create a MongoDB Atlas cluster and whitelist the deploy platform IP rules you need.
-- Create an OpenWeather API key.
-- Set `NEXT_PUBLIC_BACKEND_URL` to the Railway URL.
-- Set `DATABASE_URL`, `JWT_SECRET`, and `WEATHER_API_KEY` on Railway.
-- Test login, weather search, and dashboard history after deployment.
+- MongoDB Atlas cluster is reachable from Railway.
+- Database user has the correct username and password.
+- `DATABASE_URL` points to the production database, not a local or test database.
+- `JWT_SECRET` is a strong random value, not the example value.
+- `WEATHER_API_KEY` is a real OpenWeather key and already activated.
+- `NEXT_PUBLIC_BACKEND_URL` points to the Railway public URL.
+- Railway `Root Directory` is `/api`.
+- Vercel `Root Directory` is `web`.
+- Both platforms use Node.js `20.9+`.
+- After setting env vars, trigger a fresh deploy on both platforms.
+- Test these production flows:
+  - weather search on home page
+  - register
+  - login
+  - dashboard profile
+  - dashboard history after a weather search while logged in
 
 ## Verified Commands
 
-The following commands were used successfully in this workspace:
+The following commands were run successfully in this workspace:
 
 ```bash
 cd web && npm run lint
@@ -288,7 +356,8 @@ cd api && npm run build
 
 ## Notes for Beginners
 
-- The backend is separated clearly into `controller`, `service`, `module`, `dto`, and `schema`.
-- Passwords are hashed with bcrypt before saving to MongoDB.
+- The backend is split into `controller`, `service`, `module`, `dto`, and `schema`.
+- Passwords are hashed with bcrypt before saving.
 - Search history is only persisted when the user is authenticated.
-- The weather route still works for guests, but guest searches are not saved.
+- Guest users can still fetch weather, but guest searches are not saved.
+- If you have exposed real secrets during development, rotate them before production deployment.
