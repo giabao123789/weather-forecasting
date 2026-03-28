@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --background: #061320;
+  --foreground: #f5fbff;
+  --card: rgba(7, 22, 36, 0.78);
+  --card-strong: rgba(5, 17, 29, 0.92);
+  --muted: #8eb4cc;
+  --accent: #ffb347;
+  --accent-soft: #53d8ff;
+  --positive: #90f3bf;
+  --border: rgba(255, 255, 255, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-strong: var(--card-strong);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-positive: var(--positive);
+  --color-border: var(--border);
+  --font-sans: "Aptos", "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-mono: "Cascadia Mono", "Consolas", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at top left, rgba(83, 216, 255, 0.18), transparent 24%),
+    radial-gradient(circle at top right, rgba(255, 179, 71, 0.16), transparent 26%),
+    linear-gradient(180deg, #08192a 0%, #04111d 100%);
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  background: transparent;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+body::before,
+body::after {
+  position: fixed;
+  z-index: -1;
+  content: "";
+  inset: auto;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 9999px;
+  filter: blur(40px);
+  opacity: 0.45;
+}
+
+body::before {
+  top: -5rem;
+  right: -4rem;
+  background: rgba(83, 216, 255, 0.16);
+}
+
+body::after {
+  bottom: -7rem;
+  left: -6rem;
+  background: rgba(255, 179, 71, 0.12);
+}
+
+::selection {
+  background: rgba(83, 216, 255, 0.28);
+  color: #ffffff;
+}
+
+a,
+button,
+input {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
