@@ -198,39 +198,7 @@ export function WeatherExplorer() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-white/10 bg-card p-6 shadow-2xl shadow-black/15 backdrop-blur-xl">
-          <h2 className="text-lg font-semibold text-white">Built-in features</h2>
-          <div className="mt-5 space-y-4">
-            <div className="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-              <Cloud className="mt-0.5 h-5 w-5 text-accent-soft" />
-              <div>
-                <p className="font-medium text-white">City weather lookup</p>
-                <p className="text-sm text-muted">
-                  Fetches live temperature, conditions, humidity, wind speed, and icon data.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-              <ShieldCheck className="mt-0.5 h-5 w-5 text-positive" />
-              <div>
-                <p className="font-medium text-white">JWT-protected profile routes</p>
-                <p className="text-sm text-muted">
-                  Login and registration use NestJS auth with bcrypt password hashing.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-              <History className="mt-0.5 h-5 w-5 text-accent" />
-              <div>
-                <p className="font-medium text-white">MongoDB search history</p>
-                <p className="text-sm text-muted">
-                  Dashboard reads your latest search activity directly from the backend.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+       
         <div className="rounded-[2rem] border border-white/10 bg-card p-6 shadow-2xl shadow-black/15 backdrop-blur-xl">
           <h2 className="text-lg font-semibold text-white">Next step</h2>
           <p className="mt-3 text-sm leading-7 text-muted">

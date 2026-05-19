@@ -141,15 +141,7 @@ export function WeatherCard({
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-4 border-t border-white/10 px-6 py-4 text-sm text-muted sm:px-8">
-        <div className="inline-flex items-center gap-2">
-          <CloudSun className="h-4 w-4 text-accent" />
-          OpenWeather data delivered through the NestJS backend
-        </div>
-        <div className="font-mono text-xs uppercase tracking-[0.24em] text-accent-soft">
-          JWT-aware weather route
-        </div>
-      </div>
+    
     </section>
   );
 }
