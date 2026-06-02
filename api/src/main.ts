@@ -7,6 +7,8 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.enableCors({
     origin: ['https://weather-web-0m0x.onrender.com'],
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   });
   app.useGlobalPipes(
