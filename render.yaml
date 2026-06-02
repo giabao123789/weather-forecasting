@@ -3,7 +3,7 @@ services:
     name: weather-api
     runtime: node
     plan: free
-    buildCommand: cd api && npm install && npm run build
+    buildCommand: cd api && npm install --include=dev && npm run build
     startCommand: cd api && npm run start:prod
     envVars:
       - key: NODE_ENV
@@ -23,7 +23,7 @@ services:
     name: weather-web
     runtime: node
     plan: free
-    buildCommand: cd web && npm install && npm run build
+    buildCommand: cd web && npm install --include=dev && npm run build
     startCommand: cd web && npm run start
     envVars:
       - key: NODE_ENV
