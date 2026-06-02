@@ -33,5 +33,5 @@ services:
 
 databases:
   - name: weather-mongo
-    databaseName: weather-forecasting
+    databaseName: weather_forecasting
     plan: free
