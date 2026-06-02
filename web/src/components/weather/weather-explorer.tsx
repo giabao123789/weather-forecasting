@@ -110,7 +110,7 @@ export function WeatherExplorer() {
           </div>
           <div className="mt-6 space-y-4">
             <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Full-stack weather forecasting with live search, JWT auth, and history tracking.
+             weather forecasting made delightful  
             </h1>
             <p className="max-w-2xl text-base leading-8 text-muted sm:text-lg">
               Search by city, auto-detect your location, switch between Celsius and
