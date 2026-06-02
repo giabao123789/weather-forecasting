@@ -29,13 +29,13 @@ export function WeatherSearchForm({
             value={city}
             onChange={(event) => onCityChange(event.target.value)}
             placeholder="Search for a city, for example Ho Chi Minh City"
-            className="h-14 w-full rounded-2xl border border-white/10 bg-slate-950/40 px-12 text-sm text-white outline-none placeholder:text-muted focus:border-accent-soft focus:shadow-[0_0_0_4px_rgba(83,216,255,0.12)]"
+            className="h-14 w-full rounded-[1.75rem] border border-white/10 bg-slate-950/40 px-12 text-sm text-white outline-none placeholder:text-muted focus:border-accent-soft focus:ring-2 focus:ring-accent-soft/25"
           />
         </label>
         <button
           type="submit"
           disabled={isLoading || isLocating}
-          className="inline-flex h-14 items-center justify-center rounded-2xl bg-gradient-to-r from-accent to-accent-soft px-6 text-sm font-semibold text-slate-950 shadow-lg shadow-accent/25 disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex h-14 items-center justify-center rounded-[1.75rem] bg-gradient-to-r from-accent to-accent-soft px-6 text-sm font-semibold text-slate-950 shadow-lg shadow-accent/25 transition duration-200 hover:-translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-70"
         >
           {isLoading ? 'Searching...' : 'Search weather'}
         </button>
@@ -44,7 +44,7 @@ export function WeatherSearchForm({
         type="button"
         onClick={onDetectLocation}
         disabled={isLocating}
-        className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-muted hover:border-white/20 hover:bg-white/5 hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/40 px-4 py-2 text-sm font-medium text-muted transition duration-200 hover:border-white/20 hover:bg-slate-950/70 hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
       >
         <LocateFixed className="h-4 w-4" />
         {isLocating ? 'Detecting location...' : 'Use my current location'}

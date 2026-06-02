@@ -18,13 +18,13 @@ export class SearchHistory {
     required: true,
     index: true,
   })
-  userId: Types.ObjectId;
+  userId!: Types.ObjectId;
 
   @Prop({
     required: true,
     trim: true,
   })
-  city: string;
+  city!: string;
 
   createdAt?: Date;
 }

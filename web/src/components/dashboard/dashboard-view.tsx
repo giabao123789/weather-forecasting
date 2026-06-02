@@ -98,7 +98,7 @@ export function DashboardView() {
 
   return (
     <section className="space-y-6">
-      <div className="flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/10 backdrop-blur-2xl sm:flex-row sm:items-end sm:justify-between sm:p-8">
+      <div className="flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-white/5/80 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.22)] backdrop-blur-3xl sm:flex-row sm:items-end sm:justify-between sm:p-8">
         <div className="space-y-3">
           <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.28em] text-accent-soft">
             JWT Protected Dashboard
@@ -115,7 +115,7 @@ export function DashboardView() {
         <div className="flex flex-wrap gap-3">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-muted hover:border-white/20 hover:bg-white/5 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition hover:border-white/20 hover:bg-white/10"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to home
@@ -123,7 +123,7 @@ export function DashboardView() {
           <button
             type="button"
             onClick={() => router.refresh()}
-            className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-accent"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-soft px-4 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-accent/25 transition hover:-translate-y-[1px]"
           >
             <RefreshCw className="h-4 w-4" />
             Refresh page

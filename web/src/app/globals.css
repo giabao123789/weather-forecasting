@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #061320;
-  --foreground: #f5fbff;
-  --card: rgba(7, 22, 36, 0.78);
-  --card-strong: rgba(5, 17, 29, 0.92);
-  --muted: #8eb4cc;
+  --background: #040914;
+  --foreground: #eef7ff;
+  --card: rgba(9, 18, 34, 0.82);
+  --card-strong: rgba(11, 16, 30, 0.96);
+  --muted: #9ab8d9;
   --accent: #ffb347;
-  --accent-soft: #53d8ff;
-  --positive: #90f3bf;
-  --border: rgba(255, 255, 255, 0.12);
+  --accent-soft: #6de0ff;
+  --positive: #87f3d3;
+  --border: rgba(255, 255, 255, 0.14);
 }
 
 @theme inline {
@@ -31,13 +31,15 @@
 }
 
 html {
+  min-height: 100%;
   background:
-    radial-gradient(circle at top left, rgba(83, 216, 255, 0.18), transparent 24%),
-    radial-gradient(circle at top right, rgba(255, 179, 71, 0.16), transparent 26%),
-    linear-gradient(180deg, #08192a 0%, #04111d 100%);
+    radial-gradient(circle at top left, rgba(83, 216, 255, 0.2), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(255, 179, 71, 0.14), transparent 24%),
+    linear-gradient(180deg, #061018 0%, #02060d 100%);
 }
 
 body {
+  min-height: 100vh;
   position: relative;
   overflow-x: hidden;
   background: transparent;
@@ -54,20 +56,29 @@ body::after {
   width: 24rem;
   height: 24rem;
   border-radius: 9999px;
-  filter: blur(40px);
-  opacity: 0.45;
+  filter: blur(44px);
+  opacity: 0.42;
 }
 
 body::before {
-  top: -5rem;
-  right: -4rem;
-  background: rgba(83, 216, 255, 0.16);
+  top: -4rem;
+  right: -5rem;
+  background: rgba(83, 216, 255, 0.18);
 }
 
 body::after {
-  bottom: -7rem;
-  left: -6rem;
-  background: rgba(255, 179, 71, 0.12);
+  bottom: -8rem;
+  left: -5rem;
+  background: rgba(108, 92, 231, 0.16);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 ::selection {

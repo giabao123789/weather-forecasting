@@ -101,10 +101,10 @@ export function WeatherExplorer() {
   };
 
   return (
-    <section className="grid gap-8 lg:grid-cols-[1.22fr_0.78fr]">
+    <section className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
       <div className="space-y-6">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur-2xl sm:p-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.28em] text-accent-soft">
+        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.18)] backdrop-blur-2xl sm:p-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.28em] text-accent-soft">
             <Sparkles className="h-4 w-4" />
             Local + Production Ready
           </div>
@@ -129,14 +129,14 @@ export function WeatherExplorer() {
             />
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <span className="text-sm font-medium text-muted">Quick picks:</span>
+          <div className="mt-6 flex gap-3 overflow-x-auto pb-1 no-scrollbar">
+            <span className="flex-shrink-0 text-sm font-medium text-muted">Quick picks:</span>
             {quickCities.map((quickCity) => (
               <button
                 key={quickCity}
                 type="button"
                 onClick={() => void runCitySearch(quickCity)}
-                className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white hover:border-white/20 hover:bg-white/10"
+                className="rounded-full border border-white/10 bg-slate-950/40 px-4 py-2 text-sm font-semibold text-white transition duration-200 hover:border-white/20 hover:bg-slate-950/70 hover:-translate-y-[1px]"
               >
                 {quickCity}
               </button>
@@ -173,7 +173,7 @@ export function WeatherExplorer() {
       </div>
 
       <aside className="space-y-6">
-        <div className="rounded-[2rem] border border-white/10 bg-card p-6 shadow-2xl shadow-black/15 backdrop-blur-xl">
+        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_25px_70px_rgba(0,0,0,0.16)] backdrop-blur-3xl">
           <div className="flex items-center gap-3">
             <div className="grid h-11 w-11 place-items-center rounded-2xl bg-accent/15 text-accent">
               <Compass className="h-5 w-5" />
@@ -185,7 +185,7 @@ export function WeatherExplorer() {
               </p>
             </div>
           </div>
-          <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div className="mt-6 rounded-2xl border border-white/10 bg-slate-950/50 p-4">
             <p className="text-sm text-muted">Current session:</p>
             <p className="mt-2 text-lg font-semibold text-white">
               {isAuthenticated ? `Signed in as ${user?.name}` : 'Guest mode'}
@@ -198,8 +198,7 @@ export function WeatherExplorer() {
           </div>
         </div>
 
-       
-        <div className="rounded-[2rem] border border-white/10 bg-card p-6 shadow-2xl shadow-black/15 backdrop-blur-xl">
+        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_25px_70px_rgba(0,0,0,0.16)] backdrop-blur-3xl">
           <h2 className="text-lg font-semibold text-white">Next step</h2>
           <p className="mt-3 text-sm leading-7 text-muted">
             Use the dashboard to confirm that JWT-protected routes, MongoDB history,
@@ -207,7 +206,7 @@ export function WeatherExplorer() {
           </p>
           <Link
             href={isAuthenticated ? '/dashboard' : '/register'}
-            className="mt-5 inline-flex rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:translate-y-[-1px] hover:bg-accent"
+            className="mt-5 inline-flex rounded-full bg-gradient-to-r from-accent to-accent-soft px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-accent/25 hover:-translate-y-[1px]"
           >
             {isAuthenticated ? 'Open dashboard' : 'Create account'}
           </Link>

@@ -19,7 +19,7 @@ export function SearchHistoryList({ history }: SearchHistoryListProps) {
   }
 
   return (
-    <div className="rounded-[2rem] border border-white/10 bg-card p-6 shadow-2xl shadow-black/10 backdrop-blur-xl">
+    <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_25px_70px_rgba(0,0,0,0.12)] backdrop-blur-3xl">
       <div className="flex items-center justify-between gap-3">
         <div>
           <h2 className="text-2xl font-semibold text-white">Recent searches</h2>
@@ -36,7 +36,7 @@ export function SearchHistoryList({ history }: SearchHistoryListProps) {
         {history.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 sm:flex-row sm:items-center sm:justify-between"
+            className="flex flex-col gap-3 rounded-[1.75rem] border border-white/10 bg-white/5 p-4 shadow-[0_16px_40px_rgba(8,15,30,0.12)] transition hover:-translate-y-[1px] sm:flex-row sm:items-center sm:justify-between"
           >
             <div className="flex items-center gap-3">
               <div className="grid h-11 w-11 place-items-center rounded-2xl bg-accent-soft/12 text-accent-soft">

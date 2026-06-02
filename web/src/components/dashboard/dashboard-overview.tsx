@@ -15,7 +15,7 @@ export function DashboardOverview({
 }: DashboardOverviewProps) {
   return (
     <div className="grid gap-4 lg:grid-cols-3">
-      <div className="rounded-[1.75rem] border border-white/10 bg-card p-6 shadow-2xl shadow-black/10 backdrop-blur-xl">
+      <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 shadow-[0_25px_70px_rgba(0,0,0,0.16)] backdrop-blur-3xl">
         <div className="flex items-center gap-3 text-accent-soft">
           <UserRound className="h-5 w-5" />
           <span className="text-sm font-medium text-muted">Profile</span>
@@ -24,7 +24,7 @@ export function DashboardOverview({
         <p className="mt-1 text-sm text-muted">{profile.email}</p>
       </div>
 
-      <div className="rounded-[1.75rem] border border-white/10 bg-card p-6 shadow-2xl shadow-black/10 backdrop-blur-xl">
+      <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 shadow-[0_25px_70px_rgba(0,0,0,0.16)] backdrop-blur-3xl">
         <div className="flex items-center gap-3 text-accent">
           <History className="h-5 w-5" />
           <span className="text-sm font-medium text-muted">Saved searches</span>
@@ -35,7 +35,7 @@ export function DashboardOverview({
         </p>
       </div>
 
-      <div className="rounded-[1.75rem] border border-white/10 bg-card p-6 shadow-2xl shadow-black/10 backdrop-blur-xl">
+      <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 shadow-[0_25px_70px_rgba(0,0,0,0.16)] backdrop-blur-3xl">
         <div className="flex items-center gap-3 text-positive">
           <CalendarClock className="h-5 w-5" />
           <span className="text-sm font-medium text-muted">Latest activity</span>
