@@ -28,8 +28,6 @@ import { WeatherModule } from './weather/weather.module';
 
         return {
           uri: databaseUrl,
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
           serverSelectionTimeoutMS: 5000,
           retryAttempts: 5,
           retryDelay: 3000,
