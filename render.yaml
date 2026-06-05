@@ -14,7 +14,7 @@ services:
         sync: false
       - key: JWT_SECRET
         sync: false
-      - key: OPENWEATHER_API_KEY
+      - key: WEATHER_API_KEY
         sync: false
       - key: FRONTEND_URL
         value: https://weather-web-0m0x.onrender.com
