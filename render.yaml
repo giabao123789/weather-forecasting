@@ -18,7 +18,6 @@ services:
         sync: false
       - key: FRONTEND_URL
         value: https://weather-web-0m0x.onrender.com
-        sync: false
 
   - type: web
     name: weather-web
